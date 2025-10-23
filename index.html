@@ -1,135 +1,112 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Visor 3D desde GitHub (CDN jsDelivr)</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Visor 3D desde GitHub</title>
 
-  <!-- Librería model-viewer -->
-  <script
-    type="module"
-    src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
-  ></script>
+    <!-- Librería oficial de Google Model Viewer -->
+    <script
+      type="module"
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
+    ></script>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+    <style>
+      /* ======== ESTILOS GLOBALES ======== */
+      body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: radial-gradient(circle at center, #000000, #101010, #050505);
+        font-family: "Segoe UI", sans-serif;
+        overflow: hidden;
+        color: #fff;
+      }
 
-    body {
-      margin: 0;
-      height: 100vh;
-      background: radial-gradient(circle at center, #000000, #0a0a0a, #111111);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-      color: white;
-      font-family: "Segoe UI", sans-serif;
-    }
+      header {
+        position: absolute;
+        top: 25px;
+        display: flex;
+        gap: 20px;
+        z-index: 10;
+      }
 
-    header {
-      position: absolute;
-      top: 15px;
-      display: flex;
-      gap: 15px;
-      align-items: center;
-      background: rgba(0, 0, 0, 0.6);
-      padding: 12px 20px;
-      border-radius: 15px;
-      box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
-      backdrop-filter: blur(8px);
-      z-index: 10;
-    }
+      button {
+        background: transparent;
+        border: 2px solid #00fff0;
+        color: #00fff0;
+        font-size: 16px;
+        font-weight: 600;
+        padding: 10px 18px;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+      }
 
-    button {
-      background: none;
-      border: 2px solid #00ffff;
-      color: #00ffff;
-      padding: 10px 16px;
-      border-radius: 10px;
-      font-weight: bold;
-      font-size: 14px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-transform: uppercase;
-    }
+      button:hover {
+        background: #00fff0;
+        color: #000;
+        box-shadow: 0 0 20px #00fff0;
+      }
 
-    button:hover {
-      background: #00ffff;
-      color: #000;
-      transform: scale(1.1);
-      box-shadow: 0 0 15px #00ffff;
-    }
+      model-viewer {
+        width: 100%;
+        height: 100vh;
+      }
 
-    button.active {
-      background: #00ffff;
-      color: #000;
-      box-shadow: 0 0 15px #00ffff;
-      transform: scale(1.1);
-    }
+      /* Efecto Glow del encabezado */
+      header::before {
+        content: "";
+        position: absolute;
+        top: -10px;
+        left: -20px;
+        right: -20px;
+        bottom: -10px;
+        border-radius: 20px;
+        background: radial-gradient(circle, rgba(0, 255, 255, 0.2), transparent 70%);
+        z-index: -1;
+      }
+    </style>
+  </head>
 
-    model-viewer {
-      width: 100%;
-      height: 100%;
-      transition: opacity 0.5s ease;
-      z-index: 1;
-    }
+  <body>
+    <header>
+      <button onclick="cambiarModelo(2)">MODELO 2</button>
+      <button onclick="cambiarModelo(3)">MODELO 3</button>
+      <button onclick="cambiarModelo(4)">MODELO 4</button>
+    </header>
 
-    model-viewer::part(default-progress-bar) {
-      display: none;
-    }
+    <!-- Visor principal -->
+    <model-viewer
+      id="visor3d"
+      src="https://cdn.jsdelivr.net/gh/grosox544-arch/proyecto/modelos3d/vehiculo3/vehiculo3.gltf"
+      alt="Vehículo 3D"
+      auto-rotate
+      camera-controls
+      shadow-intensity="1"
+      exposure="1.1"
+      ar
+      disable-zoom
+    >
+    </model-viewer>
 
-    footer {
-      position: absolute;
-      bottom: 15px;
-      font-weight: 600;
-      text-shadow: 0 0 10px #00ffff;
-      opacity: 0.8;
-      z-index: 10;
-    }
+    <script>
+      // ==== Cambio dinámico de modelo ====
+      function cambiarModelo(num) {
+        const visor = document.getElementById("visor3d");
 
-    #visor3d.fade-out {
-      opacity: 0;
-    }
-  </style>
-</head>
+        const modelos = {
+          2: "https://cdn.jsdelivr.net/gh/grosox544-arch/proyecto/modelos3d/vehiculo2/vehiculo2.gltf",
+          3: "https://cdn.jsdelivr.net/gh/grosox544-arch/proyecto/modelos3d/vehiculo3/vehiculo3.gltf",
+          4: "https://cdn.jsdelivr.net/gh/grosox544-arch/proyecto/modelos3d/vehiculo4/vehiculo4.gltf"
+        };
 
-<body>
-  <header>
-    <button onclick="cambiarModelo('vehiculo2/source/vehiculo2.gltf', this)" class="active">Modelo 1</button>
-    <button onclick="cambiarModelo('vehiculo3/source/vehiculo3.gltf', this)">Modelo 2</button>
-    <button onclick="cambiarModelo('vehiculo4/source/vehiculo4.gltf', this)">Modelo 3</button>
-  </header>
-
-  <model-viewer
-    id="visor3d"
-    src="https://cdn.jsdelivr.net/gh/grosox544-arch/proyecto/modelos3d/vehiculo2/source/vehiculo2.gltf"
-    alt="Modelo 3D"
-    camera-controls
-    auto-rotate
-    shadow-intensity="1"
-    environment-image="neutral"
-    exposure="1.2"
-  ></model-viewer>
-
-  <footer>🚀 Proyecto 3D Online desde GitHub vía jsDelivr CDN</footer>
-
-  <script>
-    const visor = document.getElementById("visor3d");
-    const botones = document.querySelectorAll("header button");
-
-    function cambiarModelo(modelo, boton) {
-      visor.classList.add("fade-out");
-
-      botones.forEach(b => b.classList.remove("active"));
-      boton.classList.add("active");
-
-      setTimeout(() => {
-        visor.src = `https://cdn.jsdelivr.net/gh/grosox544-arch/proyecto/modelos3d/${modelo}`;
-        visor.classList.remove("fade-out");
-      }, 400);
-    }
-  </script>
-</body>
+        visor.src = modelos[num];
+      }
+    </script>
+  </body>
 </html>
