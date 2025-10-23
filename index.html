@@ -101,43 +101,40 @@
 </head>
 
 <body>
-  <header>
-    <button onclick="cambiarModelo('prueba.glb', this)" class="active">Modelo 1</button>
-    <button onclick="cambiarModelo('vehiculo2.gltf', this)">Modelo 2</button>
-    <button onclick="cambiarModelo('vehiculo3.gltf', this)">Modelo 3</button>
-    <button onclick="cambiarModelo('vehiculo4.gltf', this)">Modelo 4</button>
-  </header>
+ <header>
+  <button onclick="cambiarModelo('https://raw.githubusercontent.com/grosox544-arch/proyecto/main/modelos3d/prueba/source/prueba.glb', this)" class="active">MODELO 1</button>
+  <button onclick="cambiarModelo('https://raw.githubusercontent.com/grosox544-arch/proyecto/main/modelos3d/vehiculo2/source/vehiculo2.gltf', this)">MODELO 2</button>
+  <button onclick="cambiarModelo('https://raw.githubusercontent.com/grosox544-arch/proyecto/main/modelos3d/vehiculo3/source/vehiculo3.gltf', this)">MODELO 3</button>
+  <button onclick="cambiarModelo('https://raw.githubusercontent.com/grosox544-arch/proyecto/main/modelos3d/vehiculo4/source/vehiculo4.gltf', this)">MODELO 4</button>
+</header>
 
-  <model-viewer
-    id="visor3d"
-    src="https://raw.githubusercontent.com/grosox544-arch/proyecto/main/modelos3d/source/prueba.glb"
-    alt="Modelo 3D"
-    camera-controls
-    auto-rotate
-    shadow-intensity="1"
-    environment-image="neutral"
-    exposure="1.2"
-  ></model-viewer>
+<model-viewer
+  id="visor3d"
+  src="https://raw.githubusercontent.com/grosox544-arch/proyecto/main/modelos3d/prueba/source/prueba.glb"
+  alt="Modelo 3D"
+  camera-controls
+  auto-rotate
+  shadow-intensity="1"
+  environment-image="neutral"
+  exposure="1.2"
+></model-viewer>
 
-  <footer>🚀 Proyecto 3D Online - cargando desde GitHub</footer>
+<script>
+  const visor = document.getElementById("visor3d");
+  const botones = document.querySelectorAll("header button");
 
-  <script>
-    const visor = document.getElementById("visor3d");
-    const botones = document.querySelectorAll("header button");
+  function cambiarModelo(modelo, boton) {
+    visor.classList.add("fade-out");
 
-    function cambiarModelo(modelo, boton) {
-      visor.classList.add("fade-out");
+    botones.forEach(b => b.classList.remove("active"));
+    boton.classList.add("active");
 
-      // Quitar estado activo de otros botones
-      botones.forEach(b => b.classList.remove("active"));
-      boton.classList.add("active");
+    setTimeout(() => {
+      visor.src = modelo;
+      visor.classList.remove("fade-out");
+    }, 400);
+  }
+</script>
 
-      // Simular transición
-      setTimeout(() => {
-        visor.src = `https://raw.githubusercontent.com/grosox544-arch/proyecto/main/modelos3d/source/${modelo}`;
-        visor.classList.remove("fade-out");
-      }, 400);
-    }
-  </script>
 </body>
 </html>
