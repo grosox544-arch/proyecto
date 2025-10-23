@@ -2302,21 +2302,22 @@
   ],
 "images": [
   {
-    "uri": "https://raw.githubusercontent.com/grosox544-arch/proyecto/main/modelos3d/vehiculo3/textures/livery_baseColor.png"
+    "uri": "https://cdn.jsdelivr.net/gh/grosox544-arch/proyecto/modelos3d/vehiculo3/textures/livery_baseColor.png"
   },
   {
-    "uri": "https://raw.githubusercontent.com/grosox544-arch/proyecto/main/modelos3d/vehiculo3/textures/misc_bottom_baseColor.png"
+    "uri": "https://cdn.jsdelivr.net/gh/grosox544-arch/proyecto/modelos3d/vehiculo3/textures/misc_bottom_baseColor.png"
   },
   {
-    "uri": "https://raw.githubusercontent.com/grosox544-arch/proyecto/main/modelos3d/vehiculo3/textures/Tyre_baseColor.png"
+    "uri": "https://cdn.jsdelivr.net/gh/grosox544-arch/proyecto/modelos3d/vehiculo3/textures/Tyre_baseColor.png"
   },
   {
-    "uri": "https://raw.githubusercontent.com/grosox544-arch/proyecto/main/modelos3d/vehiculo3/textures/material_11_baseColor.png"
+    "uri": "https://cdn.jsdelivr.net/gh/grosox544-arch/proyecto/modelos3d/vehiculo3/textures/material_11_baseColor.png"
   },
   {
-    "uri": "https://raw.githubusercontent.com/grosox544-arch/proyecto/main/modelos3d/vehiculo3/textures/CALIPER_baseColor.png"
+    "uri": "https://cdn.jsdelivr.net/gh/grosox544-arch/proyecto/modelos3d/vehiculo3/textures/CALIPER_baseColor.png"
   }
 ],
+
 
 
   "materials": [
