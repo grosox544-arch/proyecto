@@ -2301,22 +2301,23 @@
     "KHR_materials_transmission"
   ],
   "images": [
-    {
-      "uri": "textures/livery_baseColor.png"
-    },
-    {
-      "uri": "textures/misc_bottm_baseColor.png"
-    },
-    {
-      "uri": "textures/Tyre_baseColor.png"
-    },
-    {
-      "uri": "textures/material_11_baseColor.png"
-    },
-    {
-      "uri": "textures/CALIPER_baseColor.png"
-    }
-  ],
+  {
+    "uri": "https://raw.githubusercontent.com/grosox544-arch/proyecto/main/modelos3d/vehiculo3/source/textures/livery_baseColor.png"
+  },
+  {
+    "uri": "https://raw.githubusercontent.com/grosox544-arch/proyecto/main/modelos3d/vehiculo3/source/textures/misc_bottom_baseColor.png"
+  },
+  {
+    "uri": "https://raw.githubusercontent.com/grosox544-arch/proyecto/main/modelos3d/vehiculo3/source/textures/Tyre_baseColor.png"
+  },
+  {
+    "uri": "https://raw.githubusercontent.com/grosox544-arch/proyecto/main/modelos3d/vehiculo3/source/textures/material_11_baseColor.png"
+  },
+  {
+    "uri": "https://raw.githubusercontent.com/grosox544-arch/proyecto/main/modelos3d/vehiculo3/source/textures/CALIPER_baseColor.png"
+  }
+],
+
   "materials": [
     {
       "doubleSided": true,

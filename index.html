@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Visor 3D Interactivo desde GitHub</title>
+  <title>Visor 3D desde GitHub (CDN jsDelivr)</title>
 
   <!-- Librería model-viewer -->
   <script
@@ -28,7 +28,6 @@
       font-family: "Segoe UI", sans-serif;
     }
 
-    /* === CABECERA (botones de modelo) === */
     header {
       position: absolute;
       top: 15px;
@@ -40,7 +39,7 @@
       border-radius: 15px;
       box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
       backdrop-filter: blur(8px);
-      z-index: 10; /* ✅ Los botones ahora están por encima del visor */
+      z-index: 10;
     }
 
     button {
@@ -70,7 +69,6 @@
       transform: scale(1.1);
     }
 
-    /* === VISOR 3D === */
     model-viewer {
       width: 100%;
       height: 100%;
@@ -78,22 +76,19 @@
       z-index: 1;
     }
 
-    /* Para permitir clics en botones encima */
     model-viewer::part(default-progress-bar) {
       display: none;
     }
 
-    /* === PIE DE PÁGINA === */
     footer {
       position: absolute;
       bottom: 15px;
       font-weight: 600;
       text-shadow: 0 0 10px #00ffff;
       opacity: 0.8;
-      z-index: 10; /* ✅ También sobre el visor */
+      z-index: 10;
     }
 
-    /* Animación de carga del modelo */
     #visor3d.fade-out {
       opacity: 0;
     }
@@ -101,40 +96,40 @@
 </head>
 
 <body>
- <header>
-  <button onclick="cambiarModelo('https://raw.githubusercontent.com/grosox544-arch/proyecto/main/modelos3d/prueba/source/prueba.glb', this)" class="active">MODELO 1</button>
-  <button onclick="cambiarModelo('https://raw.githubusercontent.com/grosox544-arch/proyecto/main/modelos3d/vehiculo2/source/vehiculo2.gltf', this)">MODELO 2</button>
-  <button onclick="cambiarModelo('https://raw.githubusercontent.com/grosox544-arch/proyecto/main/modelos3d/vehiculo3/source/vehiculo3.gltf', this)">MODELO 3</button>
-  <button onclick="cambiarModelo('https://raw.githubusercontent.com/grosox544-arch/proyecto/main/modelos3d/vehiculo4/source/vehiculo4.gltf', this)">MODELO 4</button>
-</header>
+  <header>
+    <button onclick="cambiarModelo('vehiculo2/source/vehiculo2.gltf', this)" class="active">Modelo 1</button>
+    <button onclick="cambiarModelo('vehiculo3/source/vehiculo3.gltf', this)">Modelo 2</button>
+    <button onclick="cambiarModelo('vehiculo4/source/vehiculo4.gltf', this)">Modelo 3</button>
+  </header>
 
-<model-viewer
-  id="visor3d"
-  src="https://raw.githubusercontent.com/grosox544-arch/proyecto/main/modelos3d/prueba/source/prueba.glb"
-  alt="Modelo 3D"
-  camera-controls
-  auto-rotate
-  shadow-intensity="1"
-  environment-image="neutral"
-  exposure="1.2"
-></model-viewer>
+  <model-viewer
+    id="visor3d"
+    src="https://cdn.jsdelivr.net/gh/grosox544-arch/proyecto/modelos3d/vehiculo2/source/vehiculo2.gltf"
+    alt="Modelo 3D"
+    camera-controls
+    auto-rotate
+    shadow-intensity="1"
+    environment-image="neutral"
+    exposure="1.2"
+  ></model-viewer>
 
-<script>
-  const visor = document.getElementById("visor3d");
-  const botones = document.querySelectorAll("header button");
+  <footer>🚀 Proyecto 3D Online desde GitHub vía jsDelivr CDN</footer>
 
-  function cambiarModelo(modelo, boton) {
-    visor.classList.add("fade-out");
+  <script>
+    const visor = document.getElementById("visor3d");
+    const botones = document.querySelectorAll("header button");
 
-    botones.forEach(b => b.classList.remove("active"));
-    boton.classList.add("active");
+    function cambiarModelo(modelo, boton) {
+      visor.classList.add("fade-out");
 
-    setTimeout(() => {
-      visor.src = modelo;
-      visor.classList.remove("fade-out");
-    }, 400);
-  }
-</script>
+      botones.forEach(b => b.classList.remove("active"));
+      boton.classList.add("active");
 
+      setTimeout(() => {
+        visor.src = `https://cdn.jsdelivr.net/gh/grosox544-arch/proyecto/modelos3d/${modelo}`;
+        visor.classList.remove("fade-out");
+      }, 400);
+    }
+  </script>
 </body>
 </html>
