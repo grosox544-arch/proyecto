@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Visor 3D desde GitHub (CDN + Raw)</title>
+  <title>Visor 3D desde GitHub (.glb CDN)</title>
 
   <!-- Librería model-viewer -->
   <script
@@ -82,14 +82,14 @@
 
 <body>
   <header>
-    <button onclick="cambiarModelo('vehiculo2/source/vehiculo2.gltf', this)">MODELO 2</button>
-    <button onclick="cambiarModelo('vehiculo3/source/vehiculo3.gltf', this)">MODELO 3</button>
-    <button onclick="cambiarModelo('vehiculo4/source/vehiculo4.gltf', this)">MODELO 4</button>
+    <button onclick="cambiarModelo('vehiculo2/vehiculo2.glb', this)">MODELO 2</button>
+    <button onclick="cambiarModelo('vehiculo3/vehiculo3.glb', this)">MODELO 3</button>
+    <button onclick="cambiarModelo('vehiculo4/vehiculo4.glb', this)">MODELO 4</button>
   </header>
 
   <model-viewer
     id="visor3d"
-    src="https://cdn.jsdelivr.net/gh/grosox544-arch/proyecto/modelos3d/vehiculo3/source/vehiculo3.gltf"
+    src="https://cdn.jsdelivr.net/gh/grosox544-arch/proyecto/modelos3d/vehiculo3/vehiculo3.glb"
     alt="Modelo 3D"
     camera-controls
     auto-rotate
@@ -98,7 +98,7 @@
     exposure="1.2"
   ></model-viewer>
 
-  <footer>🚀 Proyecto 3D Online — Modelos cargados desde GitHub</footer>
+  <footer>🚗 Proyecto 3D — Modelos GLB desde GitHub (jsDelivr CDN)</footer>
 
   <script>
     const visor = document.getElementById("visor3d");
